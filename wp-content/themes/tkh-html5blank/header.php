@@ -47,25 +47,34 @@
 							<ul class="menu-utility">
 								<li class="utility-item">
 									<button class="utility-search img-replace">Search</button>
+									<?php get_template_part('searchform'); ?>
 								</li>
 								<li class="utility-item">
-									<a class="utility-linkedin img-replace" href="https://www.linkedin.com/company/top-kohlbush-&-hoem" title="Connect with us on LinkedIn">Connect on LinkedIn</a>
+									<a class="utility-linkedin img-replace" href="https://www.linkedin.com/company/top-kohlbush-&-hoem" title="Connect with us on LinkedIn" target="_blank">Connect on LinkedIn</a>
 								</li>
 							</ul>
 						</nav>
 						<!-- /nav -->
 
-						
 					</div>
 
 				</div>
 
 				<div class="banner">
 
-					<img class="banner-img" src="/wp-content/themes/tkh-html5blank/img/banner-temp.jpg" alt="Portland Waterfront" title="" />
+					<?php
+					// add selected page bg or set to default
+					$field_banner_img = "tkh_banner_img";
+					$field_banner_desc = "tkh_banner_desc";
+					$banner_img = "/wp-content/themes/tkh-html5blank/img/banner-main.jpg";
+					$banner_img = ( get_field( $field_banner_img ) ) ? get_field( $field_banner_img ) : $banner_img;
+					?>
+					<img class="banner-img" src="<?php echo $banner_img; ?>" alt="" title="" />
+					<?php if ( is_home() || is_front_page() ) : ?>
 					<div class="container">
 						<h2 class="banner-desc">Located in the<br />beautiful city of roses</h2>
 					</div>
+					<?php endif; ?>
 				</div>
 
 			</header>

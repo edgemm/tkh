@@ -17,21 +17,21 @@
 					</div>
 					
 					<div class="footer-right">
+		
+						<p class="footer-copyright">
+							&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?> all rights reserved
+						</p>
+						<!-- /footer-copyright -->
 					
-						<!--<ul class="footer-contact">
+						<ul class="footer-contact">
 							<li class="contact-item">
 								<a class="contact-fax" href="fax:503.274.8654">503.274.8654</a>
 							</li>
 							<li class="contact-item">
 								<a class="contact-phone" href="tel:503.228.2612">503.228.2612</a>
 							</li>
-						</ul>-->
+						</ul>
 						<!-- /footer-contact -->
-		
-						<p class="footer-copyright">
-							&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?> all rights reserved
-						</p>
-						<!-- /footer-copyright -->
 	
 					</div>
 
