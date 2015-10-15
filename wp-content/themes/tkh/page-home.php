@@ -27,23 +27,21 @@
 
 		<section class="container clear">
 
-			<!--<article class="four offset-by-two columns mc-one-third">-->
-			<article class="five offset-by-two columns mc-one-third">
+			<article class="one-third columns mc-one-third">
 				<header>
 					<h1 class="header-icon icon-clipboard text-center"><a href="/about-us/">Who We Are</a></h1>
 				</header>
 				<p class="blue text-center">Our valued clients include individuals and businesses of all types and sizes.</p>
 			</article>
 
-			<!--<article class="four columns mc-one-third">
+			<article class="one-third columns mc-one-third">
 				<header>
-					<h1 class="header-icon icon-testimonial text-center"><a href="/about-us/testimonials/">Testimonials</a></h1>
+					<h1 class="header-icon icon-magnifying-silhouette text-center"><a href="/careers/">Career Opportunities</a></h1>
 				</header>
-				<p class="blue text-center">30 years of long-term relationships and satisfied clients.</p>
-			</article>-->
+				<p class="blue text-center">A growing company seeking to add great individuals to our team of experts.</p>
+			</article>
 
-			<!--<article class="four columns mc-one-third">-->
-			<article class="five offset-by-two columns mc-one-third">
+			<article class="one-third columns mc-one-third">
 				<header>
 					<h1 class="header-icon icon-envelope text-center"><a href="/contact/" class="trig-modal modal-newsletter-signup" data-modal="newsletter-signup">Newsletter</a></h1>
 				</header>

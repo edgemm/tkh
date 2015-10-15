@@ -31,6 +31,7 @@ if (function_exists('add_theme_support'))
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('news', 447, 180, true);
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
@@ -98,8 +99,8 @@ function html5blank_header_scripts()
         wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
         wp_enqueue_script('modernizr'); // Enqueue it!
 
-        wp_register_script('tkh-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('tkh-scripts'); // Enqueue it!
+        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('html5blankscripts'); // Enqueue it!
 
         wp_register_script('doubletaptogo', get_template_directory_uri() . '/js/doubletaptogo.min.js', array('jquery'), '1.0.0'); // allow double-tap for nav drop-downs on touchscreens
         wp_enqueue_script('doubletaptogo'); // Enqueue it!
@@ -212,15 +213,21 @@ function html5wp_pagination()
 }
 
 // Custom Excerpts
-function html5wp_index($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
+function html5wp_index($length) // Set length of Index pages excerpt, call using html5wp_excerpt('html5wp_index');
 {
-    return 20;
+    return 65;
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
 function html5wp_custom_post($length)
 {
     return 40;
+}
+
+// Set length of home page post excerpt;
+function html5wp_home_post($length)
+{
+    return 32;
 }
 
 // Create the Custom Excerpts callback
@@ -244,7 +251,13 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 function html5_blank_view_article($more)
 {
     global $post;
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
+    
+    // do not display if on home page
+    if( is_home() || is_front_page() ) :
+	return;
+    else:
+	return '...<br /><br /><a class="view-article" href="' . get_permalink($post->ID) . '">' . __('Read More &raquo;', 'html5blank') . '</a>';
+    endif;
 }
 
 // Remove Admin bar
@@ -340,6 +353,8 @@ add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_team'); // Add our Team Custom Post Type
 add_action('init', 'create_post_type_testimonial'); // Add our Testimonial Custom Post Type
+add_action('init', 'create_post_type_team'); // Add our Team Custom Post Type
+add_action('init', 'create_post_type_careers'); // Add our Career Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 
@@ -392,12 +407,12 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 // Create Team Custom Post type
 function create_post_type_team()
 {
-    register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('category', 'html5-blank');
     register_taxonomy_for_object_type('post_tag', 'html5-blank');
-    register_post_type('team', // Register Custom Post Type
+    register_post_type('team',
         array(
         'labels' => array(
-            'name' => __('Team Members', 'html5blank'), // Rename these to suit
+            'name' => __('Team Members', 'html5blank'),
             'singular_name' => __('Team Member', 'html5blank'),
             'add_new' => __('Add New', 'html5blank'),
             'add_new_item' => __('Add New Team Member', 'html5blank'),
@@ -411,31 +426,28 @@ function create_post_type_team()
             'not_found_in_trash' => __('No Team Members found in Trash', 'html5blank')
         ),
         'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+	'menu_icon' => 'dashicons-groups',
+        'hierarchical' => true,
         'has_archive' => true,
         'supports' => array(
             'title',
             'editor',
             'excerpt',
             'thumbnail'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
+        ),
+        'can_export' => true
     ));
 }
 
 // Create Testimonial Custom Post type
 function create_post_type_testimonial()
 {
-    register_taxonomy_for_object_type('category', 'html5-blank'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('category', 'html5-blank');
     register_taxonomy_for_object_type('post_tag', 'html5-blank');
-    register_post_type('testimonial', // Register Custom Post Type
+    register_post_type('testimonial',
         array(
         'labels' => array(
-            'name' => __('Testimonials', 'html5blank'), // Rename these to suit
+            'name' => __('Testimonials', 'html5blank'),
             'singular_name' => __('Testimonial', 'html5blank'),
             'add_new' => __('Add New', 'html5blank'),
             'add_new_item' => __('Add New Testimonial', 'html5blank'),
@@ -449,19 +461,51 @@ function create_post_type_testimonial()
             'not_found_in_trash' => __('No Testimonials found in Trash', 'html5blank')
         ),
         'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+	'menu_icon' => 'dashicons-testimonial',
+        'hierarchical' => true,
         'has_archive' => true,
         'supports' => array(
             'title',
             'editor',
             'excerpt',
             'thumbnail'
-        ), // Go to Dashboard Custom HTML5 Blank post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
+        ),
+        'can_export' => true
+    ));
+}
+
+// Create Careers Custom Post type
+function create_post_type_careers()
+{
+    register_taxonomy_for_object_type('category', 'html5-blank');
+    register_taxonomy_for_object_type('post_tag', 'html5-blank');
+    register_post_type('careers',
+        array(
+        'labels' => array(
+            'name' => __('Careers', 'html5blank'),
+            'singular_name' => __('Career', 'html5blank'),
+            'add_new' => __('Add New', 'html5blank'),
+            'add_new_item' => __('Add New Career', 'html5blank'),
+            'edit' => __('Edit', 'html5blank'),
+            'edit_item' => __('Edit Career', 'html5blank'),
+            'new_item' => __('New Career', 'html5blank'),
+            'view' => __('View Career', 'html5blank'),
+            'view_item' => __('View Career', 'html5blank'),
+            'search_items' => __('Search Career', 'html5blank'),
+            'not_found' => __('No Careers found', 'html5blank'),
+            'not_found_in_trash' => __('No Careers found in Trash', 'html5blank')
+        ),
+        'public' => true,
+	'menu_icon' => 'dashicons-welcome-learn-more',
+        'hierarchical' => true,
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ),
+        'can_export' => true
     ));
 }
 

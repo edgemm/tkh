@@ -262,6 +262,9 @@ h1 {
 .header-icon.icon-pencil {
 	background-position: center -600px;
 }
+.header-icon.icon-magnifying-silhouette {
+	background-position: center -750px;
+}
 .header-icon > a {
 	padding-top: 92px;
 	display: inline-block;
@@ -676,7 +679,10 @@ h1 {
 	margin-bottom: .1em;
 	font-size: 1.35em;
 }
-.post > .date {
+.article-banner-thmb {
+	margin-bottom: 8px;
+}
+.date {
 	margin-bottom: 1em;
 	display: block;
 	font-size: .85em;
@@ -1003,11 +1009,34 @@ ul.testimonials {
 
 
 /*------------------------------------*\
+	CAREERS
+\*------------------------------------*/
+
+.careers .divider {
+        margin-top: 1.25em;
+        padding-top: 1em;
+        border-top: 1px dashed #cbcbcb;
+}
+
+/*------------------------------------*\
 	CONTACT
 \*------------------------------------*/
 
 .contact-field {
 	width: 100%;
+}
+
+
+/*------------------------------------*\
+	FORMS
+\*------------------------------------*/
+
+.wpcf7-form > .wpcf7-response-output {
+	margin-right: 0;
+	margin-left: 0;
+	padding-left: 0;
+	padding-right: 0;
+	border-width: 0 !important;
 }
 
 
@@ -1434,7 +1463,7 @@ ul.testimonials {
 	display: none;
 }
 .utility-item .search {
-	width: 100%;
+	width: 100% !important;
 	padding-right: 42px;
 	position: relative;
 	top: 38px;

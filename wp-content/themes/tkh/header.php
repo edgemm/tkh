@@ -30,9 +30,11 @@ $mobile_class = ( $detect->isMobile() ) ? "isMobile" : "notMobile";
 		});
 		</script>
 
+		<?php if( !is_user_logged_in() ) include( "inc/gatracking.php" ); ?>
+
 	</head>
 	<body <?php body_class( $mobile_class ); ?>>
-
+	
 		<!-- wrapper -->
 		<div class="wrapper">
 
