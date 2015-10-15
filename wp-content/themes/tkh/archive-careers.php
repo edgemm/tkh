@@ -33,7 +33,7 @@
 				<!-- article -->
 				<article>
 					<h1><?php _e( 'No current positions', 'html5blank' ); ?></h1>
-					<p><?php _e( 'We are sorry, but at this time we currently do not have any positions open. If you would like to leave us your resume, you can send it to <a href="mailto:careers@tkhllp.com"><strong>careers@tkhllp.com</strong></a>. We will contact you shortly.', 'html5blank' ); ?></p>
+					<p><?php _e( 'We are sorry, but at this time we currently do not have any positions open. If you would like to leave us your resume, you can send it to <a href="mailto:careers@tkhllp.com"><strong>careers@tkhllp.com</strong></a>. We will contact you should a position become available.', 'html5blank' ); ?></p>
 				</article>
 				<!-- /article -->
 			
