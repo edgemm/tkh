@@ -14,7 +14,7 @@
 
 				<div class="ten offset-by-one columns mc-two-thirds">
 					<h1 class="unbold nil-margin"><strong>Tax and accounting services</strong></h1>
-					<p class="grey text-bulk nil-margin">Our accounting, tax preparation and tax planning services are tailored to your unique needs, helping to ensure the best possible results.</p>
+					<p class="grey text-bulk nil-margin">Celebrating 30 years in business, and our mission remains the same. Our accounting, tax preparation and tax planning services are tailored to your unique needs, helping to ensure the best possible results.</p>
 				</div>
 				<div class="four offset-by-one columns omega mc-one-third">
 					<a class="btn btn-blue btn-large" href="/services/">Learn More</a>

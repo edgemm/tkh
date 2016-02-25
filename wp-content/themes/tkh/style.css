@@ -607,11 +607,18 @@ h1 {
 .banner > .container {
 	height: 100%;
 }
+.banner-badge {
+	position: absolute;
+	top: -13px;
+	left: -141px;
+	z-index: 1;
+}
 .banner-desc {
 	padding: 20px;
+	padding-left: 80px;
 	position: absolute;
-	bottom: 39px;
-	left: 4px;
+	bottom: 64px;
+	left: 158px;
 	font-size: 2.8em;
 	font-weight: normal;
 	line-height: .96em;
@@ -1013,9 +1020,9 @@ ul.testimonials {
 \*------------------------------------*/
 
 .careers .divider {
-        margin-top: 1.25em;
-        padding-top: 1em;
-        border-top: 1px dashed #cbcbcb;
+	margin-top: 1.25em;
+	padding-top: 1em;
+	border-top: 1px dashed #cbcbcb;
 }
 
 /*------------------------------------*\
@@ -1045,46 +1052,46 @@ ul.testimonials {
 \*------------------------------------*/
 
 .modal-container {
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    opacity: 0;
-    -moz-transition: 1s all ease-out;
-    -webkit-transition: 1s all ease-out;
-    -o-transition: 1s all ease-out;
-    transition: 1s all ease-out;
-    -webkit-transition-delay: .2s;
-    -moz-transition-delay: .2s;
-    -o-transition-delay: .2s;
-    -transition-delay: .2s;
-    background: rgba(0,0,0,0.6);
-    z-index: -1;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	opacity: 0;
+	-moz-transition: 1s all ease-out;
+	-webkit-transition: 1s all ease-out;
+	-o-transition: 1s all ease-out;
+	transition: 1s all ease-out;
+	-webkit-transition-delay: .2s;
+	-moz-transition-delay: .2s;
+	-o-transition-delay: .2s;
+	-transition-delay: .2s;
+	background: rgba(0,0,0,0.6);
+	z-index: -1;
 }
 .modal-content {
-    width: 400px;
+	width: 400px;
 	max-width: 95%;
-    height: auto;
+	height: auto;
 	max-height: 95%;
-    margin: 0 auto;
-    padding: 12px 20px;
-    position: relative;
-    top: -1000px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    -webkit-box-shadow:0 0 10px #000;
-    -moz-box-shadow:0 0 10px #000;
-    box-shadow:0 0 10px #000;
-    background: #fff;
-    background: -moz-linear-gradient(#fff, #e7e7e7);
-    background: -webkit-linear-gradient(#fff, #e7e7e7);
-    background: -o-linear-gradient(#fff, #e7e7e7);
+	margin: 0 auto;
+	padding: 12px 20px;
+	position: relative;
+	top: -1000px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow:0 0 10px #000;
+	-moz-box-shadow:0 0 10px #000;
+	box-shadow:0 0 10px #000;
+	background: #fff;
+	background: -moz-linear-gradient(#fff, #e7e7e7);
+	background: -webkit-linear-gradient(#fff, #e7e7e7);
+	background: -o-linear-gradient(#fff, #e7e7e7);
 }
 
 .modal-container.target {
@@ -1331,7 +1338,15 @@ ul.testimonials {
 .banner {
 	height: 150px;
 }
+.banner-badge {
+	max-height: 120px;
+	top: 5px;
+	left: 20px;
+}
 .banner-desc {
+	padding: 10px 20px 10px 140px;
+	display: block;
+	position: static;
 	font-size: 2.35em;
 }
 
@@ -1600,6 +1615,17 @@ ul.testimonials {
 
 }
 
+@media only screen and (max-width:580px) {
+
+.banner-desc {
+	padding-left: 120px;
+	font-size: 1.9em;
+}
+.banner-badge {
+	max-height: 100px;
+}
+
+}
 @media only screen and (max-width:480px) {
 	
 /* structure */
@@ -1615,7 +1641,7 @@ ul.testimonials {
 
 /* header */
 .banner-desc {
-	font-size: 2em;
+	font-size: 1.5em;
 }
 	
 /* home */

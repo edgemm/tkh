@@ -34,7 +34,7 @@ $mobile_class = ( $detect->isMobile() ) ? "isMobile" : "notMobile";
 
 	</head>
 	<body <?php body_class( $mobile_class ); ?>>
-	
+
 		<!-- wrapper -->
 		<div class="wrapper">
 
@@ -92,7 +92,11 @@ $mobile_class = ( $detect->isMobile() ) ? "isMobile" : "notMobile";
 					<?php endif; // link opening ?>
                                             <?php if ( is_home() || is_front_page() ) : ?>
                                             <div class="container">
-                                                    <h2 class="banner-desc">Located in the<br />beautiful city of roses</h2>
+													
+                                                    <h2 class="banner-desc">
+														<img class="banner-badge" src="<?php echo get_template_directory_uri(); ?>/img/tkh-badge-30th-anniversary.png" alt="30 Years Serving Portland">
+														Celebrating 30<br>successful years<br>serving Portland
+													</h2>
                                             </div>
                                             <?php endif; // close description ?>
                                         <?php if ( get_field( $field_banner_url ) ) : ?>
